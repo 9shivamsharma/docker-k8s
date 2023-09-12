@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: postgres://todo_app_user:934357@db:5432/todo_app_development
+    volumes:
+      - .:/app
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: todo_app_user
+      POSTGRES_PASSWORD: 934357
+      POSTGRES_DB: todo_app_development

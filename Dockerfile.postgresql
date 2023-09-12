@@ -1,0 +1,10 @@
+# Use the official PostgreSQL image as the base image
+FROM postgres:13
+
+# Set the environment variables for the database
+ENV POSTGRES_USER todo_app_user
+ENV POSTGRES_PASSWORD 934357
+ENV POSTGRES_DB todo_app_development
+
+# Expose the PostgreSQL default port
+EXPOSE 5432
